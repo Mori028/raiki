@@ -201,8 +201,15 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	//------音声読み込み--------//
 	///////////////////////////
 
-	SoundData soundData1 = SoundLoadWave("Resources/Alarm01.wav");
-	SoundData soundData2 = SoundLoadWave("Resources/Alarm01.wav");
+	SoundData soundData1 = SoundLoadWave("Resources/title.wav");
+	SoundData soundData2 = SoundLoadWave("Resources/cr.wav");
+	SoundData soundData3 = SoundLoadWave("Resources/hit1.wav");
+	SoundData soundData4 = SoundLoadWave("Resources/hit2.wav");
+	SoundData soundData5 = SoundLoadWave("Resources/ss.wav");
+
+	SoundData soundData6 = SoundLoadWave("Resources/bakuha.wav");
+	int CheckFlag3 = 0;
+
 
 	// ----- ウィンドウクラス ----- //
 	WindowsApp winApp;
@@ -1114,7 +1121,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	//距離
 	float distance = -300;
 	//敵のライフ
-	int enemyLife = 15;
+	int enemyLife = 10;
 
 
 	//カメラの回転角
@@ -1336,6 +1343,102 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Clear = Sprite::Create(2, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
 	Clear->SetSize({ 1280.0f, 720.0f });
 
+	Sprite* go = nullptr;
+	Sprite::LoadTexture(6, L"Resources/go.png");
+	go = Sprite::Create(6, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	go->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* go2 = nullptr;
+	Sprite::LoadTexture(7, L"Resources/go2.png");
+	go2 = Sprite::Create(7, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	go2->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* go3 = nullptr;
+	Sprite::LoadTexture(8, L"Resources/go3.png");
+	go3 = Sprite::Create(8, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	go3->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* go4 = nullptr;
+	Sprite::LoadTexture(9, L"Resources/go4.png");
+	go4 = Sprite::Create(9, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	go4->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* ed = nullptr;
+	Sprite::LoadTexture(10, L"Resources/ed.png");
+	ed = Sprite::Create(10, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	ed->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* ed2 = nullptr;
+	Sprite::LoadTexture(11, L"Resources/ed2.png");
+	ed2 = Sprite::Create(11, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	ed2->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* ed3 = nullptr;
+	Sprite::LoadTexture(13, L"Resources/ed3.png");
+	ed3 = Sprite::Create(13, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	ed3->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* ed4 = nullptr;
+	Sprite::LoadTexture(14, L"Resources/ed4.png");
+	ed4 = Sprite::Create(14, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	ed4->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* Hp10 = nullptr;
+	Sprite::LoadTexture(15, L"Resources/10.png");
+	Hp10 = Sprite::Create(15, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	Hp10->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* Hp9 = nullptr;
+	Sprite::LoadTexture(16, L"Resources/9.png");
+	Hp9 = Sprite::Create(16, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	Hp9->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* Hp8 = nullptr;
+	Sprite::LoadTexture(17, L"Resources/8.png");
+	Hp8 = Sprite::Create(17, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	Hp8->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* Hp7 = nullptr;
+	Sprite::LoadTexture(18, L"Resources/7.png");
+	Hp7 = Sprite::Create(18, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	Hp7->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* Hp6 = nullptr;
+	Sprite::LoadTexture(19, L"Resources/6.png");
+	Hp6 = Sprite::Create(19, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	Hp6->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* Hp5 = nullptr;
+	Sprite::LoadTexture(20, L"Resources/5.png");
+	Hp5 = Sprite::Create(20, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	Hp5->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* Hp4 = nullptr;
+	Sprite::LoadTexture(21, L"Resources/4.png");
+	Hp4 = Sprite::Create(21, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	Hp4->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* Hp3 = nullptr;
+	Sprite::LoadTexture(22, L"Resources/3.png");
+	Hp3 = Sprite::Create(22, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	Hp3->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* Hp2 = nullptr;
+	Sprite::LoadTexture(23, L"Resources/2.png");
+	Hp2 = Sprite::Create(23, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	Hp2->SetSize({ 1280.0f, 720.0f });
+
+	Sprite* Hp1 = nullptr;
+	Sprite::LoadTexture(24, L"Resources/1.png");
+	Hp1 = Sprite::Create(24, { 640.0f, 360.0f }, { 1.0f, 1.0f, 1.0f, 1.0f }, { 0.5f, 0.5f });
+	Hp1->SetSize({ 1280.0f, 720.0f });
+	int goTimer = 0;
+	int isGoFlag = 0;
+
+	float edTimer = 0;
+	int isEdFlag = 0;
+
+
 	int CheckFlag = 0;
 	int CheckFlag2 = 0;
 
@@ -1398,10 +1501,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 		if (sceneNo_ == SceneNo::Title) {
 			if (CheckFlag == 0) {
-				////音声再生
-				//SoundPlayWave(xAudio2.Get(), soundData1);
+				//音声再生
+				SoundPlayWave(xAudio2.Get(), soundData1);
 				CheckFlag = 1;
 			}
+
+			eye = { 0, 0, -300 };
 			PlayerBulletRotation = { 0.0f,0.0f,0.0f };
 			PlayerBulletPosition = eye;
 			PlayerBulletScale = { 2.0f,1.0f,2.0f };
@@ -1458,19 +1563,25 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 			//距離
 			distance = -300;
 			//敵のライフ
-			enemyLife = 15;
+			enemyLife = 10;
 
+			isGoFlag = 0;
+			isEdFlag = 0;
+			goTimer = 0;
+			edTimer = 0;
 
 			//カメラの回転角
 			angle = 0.0f;
 
 			if (input->TriggerKey(DIK_SPACE)) {
+				//音声再生
+				SoundPlayWave(xAudio2.Get(), soundData2);
+
 				//スタートした(最初のカメラ用)
 				isTutorial = 1;
 
 				sceneNo_ = SceneNo::Game;
-				////音声再生
-				//SoundPlayWave(xAudio2.Get(), soundData2);
+
 			}
 		}
 
@@ -1491,6 +1602,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 
 		if (sceneNo_ == SceneNo::Game) {
+
 			if (isTutorial == 1) {
 				//回転
 				if (input->PushKey(DIK_A) || input->PushKey(DIK_D)) {
@@ -1560,8 +1672,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 				//弾
 				if (input->TriggerKey(DIK_SPACE)) {
-					/*音声再生
-					SoundPlayWave(xAudio2.Get(), soundData2);*/
+					//音声再生
+					SoundPlayWave(xAudio2.Get(), soundData5);
 					bezierMode = TRUE;
 					velocity.x = target.x - eye.x;
 					velocity.y = target.y - eye.y;
@@ -1610,6 +1722,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 
 				if (input->TriggerKey(DIK_E)) {
+					isGoFlag = 1;
 					//スタートの数値
 					EnemyPosition = { 0.0,150.0,0.0 };
 					EnemyPosition4 = { 0.0,70.0,0.0, };
@@ -1625,9 +1738,17 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 					timer = 0;
 					velocity = { 0, 0, playerBulletSpeed };
 				}
+
+
 			}
 			else if (isTutorial == 0) {
 				particleManager->Update();
+				if (isGoFlag == 1) {
+					goTimer++;
+				}
+				if (goTimer >= 100) {
+					goTimer = 100;
+				}
 				//始まった時
 				if (isStart == 1) {
 
@@ -1746,6 +1867,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						}
 						//ゆっくり回転
 						if (slowmode == 1) {
+							edTimer++;
 							//FPS変更
 							fps->SetFrameRate(5);
 							distance -= 0.5;
@@ -1758,6 +1880,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						}
 						//回転終了
 						if (slowCount == 10) {
+							edTimer = 11;
 							slowmode = 0;
 							if (distance > -300) {
 								//FPS変更
@@ -1765,7 +1888,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 								distance -= 10;
 							}
 							else {
-								if (finishTimer < 200) {
+								if (finishTimer < 160) {
+
+									if (CheckFlag3 == 0) {
+										//音声再生
+										SoundPlayWave(xAudio2.Get(), soundData6);
+										CheckFlag3 = 1;
+									}
 									//パーティクル範囲
 									for (int i = 0; i < 20; i++) {
 										//X,Y,Z全て[-5.0f,+5.0f]でランダムに分布
@@ -1794,7 +1923,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 										particleManager->Update();
 									}
 								}
-								else if (finishTimer == 300) {
+								else if (finishTimer == 200) {
 									sceneNo_ = SceneNo::Clear;
 								}
 								finishTimer++;
@@ -1868,6 +1997,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 							}
 
 							enemyLife -= 1;
+							//音声再生
+							SoundPlayWave(xAudio2.Get(), soundData3);
 							bezierMode = FALSE;
 							PlayerBulletPosition.y = eye.y - 5;
 							PlayerBulletPosition.x = (distance)*sinf(angle - XMConvertToRadians(1.0f));
@@ -1905,7 +2036,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 								particleManager->Update();
 							}
 
-							enemyLife -= 1;
+							enemyLife -= 2;
+							//音声再生
+							SoundPlayWave(xAudio2.Get(), soundData4);
 							bezierMode = FALSE;
 							PlayerBulletPosition.y = eye.y - 5;
 							PlayerBulletPosition.x = (distance)*sinf(angle - XMConvertToRadians(1.0f));
@@ -1917,8 +2050,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 						//弾
 						if (input->TriggerKey(DIK_SPACE)) {
-							/*音声再生
-							SoundPlayWave(xAudio2.Get(), soundData2);*/
+							//音声再生
+							SoundPlayWave(xAudio2.Get(), soundData5);
 							bezierMode = TRUE;
 							velocity.x = target.x - eye.x;
 							velocity.y = target.y - eye.y;
@@ -1960,13 +2093,13 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						}
 
 						//お試し
-						if (input->TriggerKey(DIK_E)) {
+						/*if (input->TriggerKey(DIK_E)) {
 							isDead = 1;
 							isZoom = 1;
-						}
+						}*/
 
 						//敵が死んだ
-						if (enemyLife == 0) {
+						if (enemyLife <= 0) {
 							isDead = 1;
 							isZoom = 1;
 						}
@@ -1992,7 +2125,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		if (sceneNo_ == SceneNo::Clear) {
 			if (CheckFlag2 == 0) {
 				//音声再生
-				/*SoundPlayWave(xAudio2.Get(), soundData2);*/
+				SoundPlayWave(xAudio2.Get(), soundData2);
 				CheckFlag2 = 1;
 			}
 			if (input->TriggerKey(DIK_SPACE) && sceneNo_ == SceneNo::Clear) {
@@ -2504,6 +2637,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				// 3Dオブクジェクトの描画
 				particleManager->Draw();
 
+
+
 				// 3Dオブジェクト描画後処理
 				ParticleManager::PostDraw();
 
@@ -2545,6 +2680,97 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				}
 
 
+
+				Sprite::PreDraw(DXInit.commandList.Get());
+
+				if (goTimer >= 5 && goTimer <= 60) {
+					go->Draw();
+				}
+				else if (goTimer >= 61 && goTimer <= 62) {
+					go2->Draw();
+				}
+				else if (goTimer >= 63 && goTimer <= 64) {
+					go3->Draw();
+				}
+				else if (goTimer >= 65 && goTimer <= 67) {
+					go4->Draw();
+				}
+
+				if (edTimer >= 0.1f && edTimer <= 0.6f) {
+					ed->Draw();
+				}
+				else if (edTimer >= 0.7f && edTimer <= 1.3f) {
+					ed2->Draw();
+				}
+				else if (edTimer >= 1.4f && edTimer <= 2.0f) {
+					ed3->Draw();
+				}
+				else if (edTimer >= 2.1f && edTimer <= 5.3f) {
+					ed4->Draw();
+				}
+
+				// 3Dオブジェクト描画前処理
+				ParticleManager::PreDraw(DXInit.commandList.Get());
+
+				// 3Dオブクジェクトの描画
+				particleManager->Draw();
+
+				// 3Dオブジェクト描画後処理
+				ParticleManager::PostDraw();
+
+				Sprite::PostDraw();
+				if (enemyLife == 10) {
+					Sprite::PreDraw(DXInit.commandList.Get());
+					Hp10->Draw();
+					Sprite::PostDraw();
+				}
+				if (enemyLife == 9) {
+					Sprite::PreDraw(DXInit.commandList.Get());
+					Hp9->Draw();
+					Sprite::PostDraw();
+				}
+				if (enemyLife == 8) {
+					Sprite::PreDraw(DXInit.commandList.Get());
+					Hp8->Draw();
+					Sprite::PostDraw();
+				}
+				if (enemyLife == 7) {
+					Sprite::PreDraw(DXInit.commandList.Get());
+					Hp7->Draw();
+					Sprite::PostDraw();
+				}
+				if (enemyLife == 6) {
+					Sprite::PreDraw(DXInit.commandList.Get());
+					Hp6->Draw();
+					Sprite::PostDraw();
+				}
+				if (enemyLife == 5) {
+					Sprite::PreDraw(DXInit.commandList.Get());
+					Hp5->Draw();
+					Sprite::PostDraw();
+				}
+				if (enemyLife == 4) {
+					Sprite::PreDraw(DXInit.commandList.Get());
+					Hp4->Draw();
+					Sprite::PostDraw();
+				}
+				if (enemyLife == 3) {
+					Sprite::PreDraw(DXInit.commandList.Get());
+					Hp3->Draw();
+					Sprite::PostDraw();
+				}
+				if (enemyLife == 2) {
+					Sprite::PreDraw(DXInit.commandList.Get());
+					Hp2->Draw();
+					Sprite::PostDraw();
+				}
+				if (enemyLife == 1) {
+					Sprite::PreDraw(DXInit.commandList.Get());
+					Hp1->Draw();
+					Sprite::PostDraw();
+				}
+
+
 				////インデックスバッファビューの設定コマンド
 				//DXInit.commandList->IASetIndexBuffer(&ibView);
 
@@ -2566,14 +2792,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				//// 描画コマンド
 				//DXInit.commandList->DrawIndexedInstanced(_countof(indices), 1, 0, 0, 0);
 
-				// 3Dオブジェクト描画前処理
-				ParticleManager::PreDraw(DXInit.commandList.Get());
-
-				// 3Dオブクジェクトの描画
-				particleManager->Draw();
-
-				// 3Dオブジェクト描画後処理
-				ParticleManager::PostDraw();
 			}
 		}
 
@@ -2697,6 +2915,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	xAudio2.Reset();
 	//音声データ解放
 	SoundUnload(&soundData1);
+	SoundUnload(&soundData2);
+	SoundUnload(&soundData3);
+	SoundUnload(&soundData4);
+	SoundUnload(&soundData5);
+	SoundUnload(&soundData6);
 
 	return 0;
 }
