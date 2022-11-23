@@ -1505,7 +1505,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 				SoundPlayWave(xAudio2.Get(), soundData1);
 				CheckFlag = 1;
 			}
-
+			target = { 0.0,0.0,0.0 };
 			eye = { 0, 0, -300 };
 			PlayerBulletRotation = { 0.0f,0.0f,0.0f };
 			PlayerBulletPosition = eye;
@@ -1660,6 +1660,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 						particleManager->Update();
 					}
 
+					SoundPlayWave(xAudio2.Get(), soundData3);
 					isBulletDead = 1;
 					bezierMode = FALSE;
 					PlayerBulletPosition.y = eye.y - 5;
